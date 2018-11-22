@@ -1,13 +1,16 @@
 exports.servicoUsuario = function servicoUsuario(app, MongoClient, url) {
-  app.route('/api/cats/:name').get((req, res) => {
+  app.route('/api/usuario/:name').get((req, res) => {
+    var query = { nome: req.params.name };
+    console.log(this.req);
+    console.log(this.res);
     //-------------------base de dados-----------------
     MongoClient.connect(url, function (err, db) {
-      if (err) throw err;
-      var query = { nome: req };
-      db.collection("usuario").find(query).toArray(function (err, result) {
-        if (err) throw err;
+      if (err) console.log(err);
+      var dbo = db.db("gp_trabalhofinal");
+      dbo.collection("usuarios").find(query).toArray(function (err, result) {
+        if (err) console.log(err);
         console.log(result);
-        res.send({ name: result });
+        res.send(result);
         db.close();
       });
     });
