@@ -19,8 +19,8 @@ export class UsuarioService {
     return this.http.get<Usuario[]>('http://localhost:8000/api/usuario/' + nome);
   }
 
-  insertUsuario(usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>('http://localhost:8000/api/cats/', usuario);
+  insertUsuario(usuario: Usuario): Observable<string> {
+    return this.http.post<string>('http://localhost:8000/api/usuario/insert/', usuario);
   }
 
   updateUsuario(usuario: Usuario): Observable<void> {
