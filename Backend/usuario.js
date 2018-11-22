@@ -1,23 +1,20 @@
-const express = require('express');
-
-const app = express();
-
-const cors = require('cors')
-
-var corsOptions = {
-  origin: 'http://localhost:4200',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
-}
-const bodyParser = require('body-parser');
-app.use(bodyParser.json());
-
-app.use(cors(corsOptions))
-
-app.listen(8000, () => {
-  console.log("servidor rodando");
-  app.route('/api/cats/:name').get((req, res) => {
-    const requestedCatName = req.params['name'];
-    res.send({ name: requestedCatName });
+exports.servicoUsuario = function servicoUsuario(app, MongoClient, url) {
+  app.route('/api/usuario/:name').get((req, res) => {
+    var query = { nome: req.params.name };
+    console.log(this.req);
+    console.log(this.res);
+    //-------------------base de dados-----------------
+    MongoClient.connect(url, function (err, db) {
+      if (err) console.log(err);
+      var dbo = db.db("gp_trabalhofinal");
+      dbo.collection("usuarios").find(query).toArray(function (err, result) {
+        if (err) console.log(err);
+        console.log(result);
+        res.send(result);
+        db.close();
+      });
+    });
+    //--------------------------------------------------
   });
 
   app.route('/api/cats').post((req, res) => {
@@ -31,7 +28,7 @@ app.listen(8000, () => {
   app.route('/api/cats/:name').delete((req, res) => {
     res.sendStatus(204);
   });
-});
+};
 
 
 
