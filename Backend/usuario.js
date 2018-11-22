@@ -1,8 +1,8 @@
 exports.servicoUsuario = function servicoUsuario(app, MongoClient, url) {
-  app.route('/api/usuario/:name').get((req, res) => {
-    var query = { nome: req.params.name };
-    console.log(this.req);
-    console.log(this.res);
+  //buscar dados usuário por nome
+  app.route('/api/usuario/:nome').get((req, res) => {
+    var query = { nome: req.params.nome };
+    console.log(req.params.nome);
     //-------------------base de dados-----------------
     MongoClient.connect(url, function (err, db) {
       if (err) console.log(err);
@@ -16,8 +16,22 @@ exports.servicoUsuario = function servicoUsuario(app, MongoClient, url) {
     });
     //--------------------------------------------------
   });
-
-  app.route('/api/cats').post((req, res) => {
+  //inserir novo usuário
+  app.route('/api/usuario/insert/').post((req, res) => {
+    var myobj = req.body;
+    console.log('meu objeto' + myobj);
+    //--------------------base de dados--------------
+    MongoClient.connect(url, function (err, db) {
+      if (err) throw err;
+      var dbo = db.db("gp_trabalhofinal");
+      dbo.collection("usuarios").insertOne(myobj, function (err, res) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        res.send(201, "inserido");
+        db.close();
+      });
+    });
+    //-----------------------------------------------
     res.send(201, req.body);
   });
 
