@@ -1,0 +1,22 @@
+{
+    "titulo": "",
+    "numero_paginas": "",
+    "autor" : [
+        {
+            "id_autor" : "",
+            "nome": ""
+        }
+    ],
+    "editora": {
+        "id_editora": "",
+        "nome": ""
+    },
+    "Sinopse": "",
+    "comentarios": [
+        {
+            "comentario": "",
+            "autor_comentario": ""
+        }
+    ],
+    "avaliacao": ""
+}

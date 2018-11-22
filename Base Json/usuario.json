@@ -1,0 +1,50 @@
+{
+    "email": "",
+    "login": "",
+    "senha": "",
+    "nome": "",
+    "data_nascimento": "",
+    "ativo": "",
+    "tipo": ["moderador", "comum"],
+    "sexo": "",
+    "estado": "",
+    "pretensao_leitura": [
+        {
+            "id_livro": "",
+            "nome_livro": "",
+            "nome_autor": ""
+        }
+    ],
+    "leitura_andamento": [
+        {
+            "id_livro": "",
+            "nome_livro": "",
+            "nome_autor": ""
+        }
+    ],
+    "leitura_concluida": [
+        {
+            "id_livro": "",
+            "nome_livro": "",
+            "nome_autor": ""
+        }
+    ],
+    "meta_leitura": [
+        {
+            "nome_livro": "",
+            "data_inicio_previsao": "",
+            "data_termino_previsao": "",
+            "tempo_leitura": "",
+            "status": ""
+        }
+    ],
+    "periodo_leitura": [
+        {
+            "id_livro": "",
+            "nome_livro": "",
+            "inicio_leitura": "",
+            "termino_leitura": "",
+            "comentários": ""
+        }
+    ]
+}

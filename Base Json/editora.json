@@ -1,0 +1,14 @@
+{
+    "nome": "",
+    "endereco": [
+        {
+            "logradouro": "",
+            "numero": "",
+            "bairro": "",
+            "cidade": "",
+            "estado": "",
+            "cep": ""
+        }
+    ],
+    "historia": ""
+}
