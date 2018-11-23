@@ -1,13 +1,30 @@
-exports.servicoUsuario = function servicoUsuario(app, MongoClient, url) {
+exports.servicoUsuario = function servicoUsuario(app, MongoClient, url, base,colecao) {
+  //buscar dados usuário por login
+  app.route('/api/usuario/getlogin/:login').get((req, res) => {
+    var query = { login: req.params.login };
+    console.log(req.params.login);
+    //-------------------base de dados-----------------
+    MongoClient.connect(url, function (err, db) {
+      if (err) console.log(err);
+      var dbo = db.db(base);
+      dbo.collection(colecao).find(query).toArray(function (err, result) {
+        if (err) console.log(err);
+        console.log(result);
+        res.send(result);
+        db.close();
+      });
+    });
+    //--------------------------------------------------
+  });
   //buscar dados usuário por nome
-  app.route('/api/usuario/:nome').get((req, res) => {
+  app.route('/api/usuario/getnome/:nome').get((req, res) => {
     var query = { nome: req.params.nome };
     console.log(req.params.nome);
     //-------------------base de dados-----------------
     MongoClient.connect(url, function (err, db) {
       if (err) console.log(err);
-      var dbo = db.db("gp_trabalhofinal");
-      dbo.collection("usuarios").find(query).toArray(function (err, result) {
+      var dbo = db.db(base);
+      dbo.collection(colecao).find(query).toArray(function (err, result) {
         if (err) console.log(err);
         console.log(result);
         res.send(result);
@@ -22,8 +39,8 @@ exports.servicoUsuario = function servicoUsuario(app, MongoClient, url) {
     //--------------------base de dados--------------
     MongoClient.connect(url, function (err, db) {
       if (err) throw err;
-      var dbo = db.db("gp_trabalhofinal");
-      dbo.collection("usuarios").insertOne(myobj, function (err, res) {
+      var dbo = db.db(base);
+      dbo.collection(colecao).insertOne(myobj, function (err, res) {
         if (err) throw err;
         console.log("1 document inserted");
         db.close();
@@ -42,8 +59,8 @@ exports.servicoUsuario = function servicoUsuario(app, MongoClient, url) {
     //--------------------base de dados---------
     MongoClient.connect(url, function (err, db) {
       if (err) throw err;
-      var dbo = db.db("gp_trabalhofinal");
-      dbo.collection("usuarios").updateOne(myquery, newvalues, function (err, res) {
+      var dbo = db.db(base);
+      dbo.collection(colecao).updateOne(myquery, newvalues, function (err, res) {
         if (err) throw err;
         console.log("1 document updated");
         db.close();
@@ -56,10 +73,10 @@ exports.servicoUsuario = function servicoUsuario(app, MongoClient, url) {
   app.route('/api/usuario/remove/:nome').delete((req, res) => {
     var myquery = { nome: req.params.nome };
     //--------------------base de dados---------------
-    MongoClient.connect(url, function(err, db) {
+    MongoClient.connect(url, function (err, db) {
       if (err) throw err;
-      var dbo = db.db("gp_trabalhofinal");   
-      dbo.collection("usuarios").deleteOne(myquery, function(err, obj) {
+      var dbo = db.db(base);
+      dbo.collection(colecao).deleteOne(myquery, function (err, obj) {
         if (err) throw err;
         console.log("1 document deleted");
         db.close();

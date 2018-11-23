@@ -15,8 +15,12 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) {}
 
-  getUsuario(nome: string): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>('http://localhost:8000/api/usuario/' + nome);
+  getUsuarioLogin(login: string): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>('http://localhost:8000/api/usuario/getlogin/' + login);
+  }
+  
+  getUsuarioNome(nome: string): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>('http://localhost:8000/api/usuario/getnome/' + nome);
   }
 
   insertUsuario(usuario: Usuario): Observable<Retorno> {
