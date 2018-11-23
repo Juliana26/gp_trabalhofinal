@@ -1,6 +1,6 @@
 exports.servicoLivro = function servicoLivro(service, app, MongoClient, url, base, colecao) {
   //buscar dados livro por nome
-  app.route('/api/' + service + '/getlivro/:titulo').get((req, res) => {
+  app.route('/api/' + service + '/gettitulo/:titulo').get((req, res) => {
     var query = { titulo: req.params.titulo };
     //-------------------base de dados-----------------
     MongoClient.connect(url, function (err, db) {
