@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from './usuario'
-
-export interface Retorno{
-  success: boolean;
-  message: string;
-}
+import { Retorno } from './retorno'
 
 @Injectable({
   providedIn: 'root'
