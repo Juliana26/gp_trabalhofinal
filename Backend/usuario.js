@@ -19,7 +19,6 @@ exports.servicoUsuario = function servicoUsuario(app, MongoClient, url) {
   //inserir novo usuário
   app.route('/api/usuario/insert/').post((req, res) => {
     var myobj = req.body;
-    console.log('meu objeto' + myobj);
     //--------------------base de dados--------------
     MongoClient.connect(url, function (err, db) {
       if (err) throw err;
@@ -27,20 +26,47 @@ exports.servicoUsuario = function servicoUsuario(app, MongoClient, url) {
       dbo.collection("usuarios").insertOne(myobj, function (err, res) {
         if (err) throw err;
         console.log("1 document inserted");
-        res.send(201, "inserido");
+        db.close();
+      });
+      res.send({ success: true, message: 'inserido com sucesso' });
+    });
+    //-----------------------------------------------
+  });
+  //altera usuário por nome
+  app.route('/api/usuario/update/:nome').put((req, res) => {
+    var myquery = { nome: req.params.nome };
+    delete req.body._id;
+    var newvalues = { $set: req.body };
+    console.log(myquery);
+    console.log(newvalues);
+    //--------------------base de dados---------
+    MongoClient.connect(url, function (err, db) {
+      if (err) throw err;
+      var dbo = db.db("gp_trabalhofinal");
+      dbo.collection("usuarios").updateOne(myquery, newvalues, function (err, res) {
+        if (err) throw err;
+        console.log("1 document updated");
+        db.close();
+      });
+      res.send({ success: true, message: 'alterado com sucesso' });
+    });
+    //-------------------------------------------------
+  });
+
+  app.route('/api/usuario/remove/:nome').delete((req, res) => {
+    var myquery = { nome: req.params.nome };
+    //--------------------base de dados---------------
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("gp_trabalhofinal");   
+      dbo.collection("usuarios").deleteOne(myquery, function(err, obj) {
+        if (err) throw err;
+        console.log("1 document deleted");
         db.close();
       });
     });
-    //-----------------------------------------------
-    res.send(201, req.body);
-  });
-
-  app.route('/api/cats/:name').put((req, res) => {
-    res.send(200, req.body);
-  });
-
-  app.route('/api/cats/:name').delete((req, res) => {
-    res.sendStatus(204);
+    //--------------------------------------------
+    res.send({ success: true, message: 'deletado com sucesso' });
   });
 };
 
