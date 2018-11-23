@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService, Retorno } from '../Services/usuario.service'
 import { Usuario } from './usuario';
-<<<<<<< HEAD
 import { Observable } from 'rxjs';
-=======
 
->>>>>>> 82e461f9cfe312410264c07b6c6db3054e8fc0e2
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
