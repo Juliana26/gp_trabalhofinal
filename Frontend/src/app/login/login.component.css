@@ -1,0 +1,56 @@
+div.container-fluid{
+    background-image: url("../../assets/imagens/login.jpg");
+    height: 560px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    opacity: 0.7;
+}
+
+div.container-fluid-redefinicao{
+    background-image: url("../../assets/imagens/login.jpg");
+    height: 560px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    opacity: 0.7;
+}
+
+div.container{
+    justify-content: left;
+    display: flex;
+}
+
+div.container-redefinicao{
+    justify-content: left;
+    display: flex;
+}
+
+form {
+    margin-top: 70px;
+    align-content: center;
+    vertical-align: middle;
+}
+
+a {
+    border: none;
+    font-size: 1rem;
+    color: white;
+    text-decoration-line: none;
+}
+
+a.forgotpassword {
+    color: #0e0e0f;
+    font-size: 12px;
+    font-weight: bold;
+    align-content: center
+}
+
+#esquerda {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
