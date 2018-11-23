@@ -10,17 +10,17 @@ export interface Usuario {
     sexo: string;
     estado: string;
     pretensao_leitura: {
-        id_livro: number,
+        id_livro: string,
         nome_livro: string,
         nome_autor: string
     }[];
     leitura_andamento: {
-        id_livro: number,
+        id_livro: string,
         nome_livro: string,
         nome_autor: string
     }[];
     leitura_concluida: {
-        id_livro: number,
+        id_livro: string,
         nome_livro: string,
         nome_autor: string
     }[];
