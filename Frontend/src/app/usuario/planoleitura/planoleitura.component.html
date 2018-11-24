@@ -1,0 +1,41 @@
+<div class="container-fluid">
+        <div class="container">
+            <form [formGroup]="planoLeituraForm" novalidate>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="nome_livro" placeholder="Título do Livro">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" formControlName="inicio_leitura" placeholder="Tempo de leitura diário">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" formControlName="data_inicio_previsao" placeholder="Data de inicio">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" formControlName="data_termino_previsao" placeholder="Data de fim">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <select class="form-control" formControlName="status" placeholder="Status Leitura">
+                            <option>Não iniciada</option>
+                            <option>Em andamento</option>
+                            <option>Concluída</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="btn-toolbar center-block" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <button class="btn btn-secondary" (click)="inserirUsuario(planoLeituraForm.value)" [disabled]="!metaLeituraForm.valid">Cadastrar</button>
+                    </div>
+                    <div class="btn-group mr-2" role="group" aria-label="Second group">
+                        <button type="button" class="btn btn-secondary"><a [routerLink]="['/home']" routerLinkActive="router-link-active">Voltar</a></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>

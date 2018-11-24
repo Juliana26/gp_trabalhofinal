@@ -1,39 +1,20 @@
-exports.servicoUsuario = function servicoUsuario(service, app, MongoClient, url, base, colecao) {
-  //buscar dados usuário por login
-  app.route('/api/' + service + '/getlogin/:login').get((req, res) => {
-    var query = { "login": `"${req.params}"` };
-    console.log(req.params.login);
+exports.servicoLivro = function servicoLivro(service, app, MongoClient, url, base, colecao) {
+  //buscar dados livro por nome
+  app.route('/api/' + service + '/gettitulo/:titulo').get((req, res) => {
+    var query = { "titulo": `"${req.params}"` };
     //-------------------base de dados-----------------
     MongoClient.connect(url, function (err, db) {
       if (err) console.log(err);
       var dbo = db.db(base);
       dbo.collection(colecao).find(query).toArray(function (err, result) {
         if (err) console.log(err);
-        console.log(result);
         res.send(result);
         db.close();
       });
     });
     //--------------------------------------------------
   });
-  //buscar dados usuário por nome
-  app.route('/api/' + service + '/getnome/:nome').get((req, res) => {
-    var query = { "nome": `"${req.params}"` };
-    console.log(req.params.nome);
-    //-------------------base de dados-----------------
-    MongoClient.connect(url, function (err, db) {
-      if (err) console.log(err);
-      var dbo = db.db(base);
-      dbo.collection(colecao).find(query).toArray(function (err, result) {
-        if (err) console.log(err);
-        console.log(result);
-        res.send(result);
-        db.close();
-      });
-    });
-    //--------------------------------------------------
-  });
-  //inserir novo usuário
+  //inserir novo livro
   app.route('/api/' + service + '/insert/').post((req, res) => {
     var myobj = req.body;
     //--------------------base de dados--------------
@@ -49,9 +30,9 @@ exports.servicoUsuario = function servicoUsuario(service, app, MongoClient, url,
     });
     //-----------------------------------------------
   });
-  //altera usuário por nome
-  app.route('/api/' + service + '/update/:nome').put((req, res) => {
-    var myquery = { "nome": `"${req.params}"` };
+  //altera livro por titulo
+  app.route('/api/' + service + '/update/:titulo').put((req, res) => {
+    var myquery = { "titulo": `"${req.params}"` };
     delete req.body._id;
     var newvalues = { $set: req.body };
     console.log(myquery);
@@ -69,9 +50,9 @@ exports.servicoUsuario = function servicoUsuario(service, app, MongoClient, url,
     });
     //-------------------------------------------------
   });
-
-  app.route('/api/' + service + '/remove/:nome').delete((req, res) => {
-    var myquery = { "nome": `"${req.params}"` };
+  //remover livro por titulo
+  app.route('/api/' + service + '/remove/:titulo').delete((req, res) => {
+    var myquery = { "titulo": `"${req.params}"` };
     //--------------------base de dados---------------
     MongoClient.connect(url, function (err, db) {
       if (err) throw err;

@@ -1,0 +1,27 @@
+div.container{
+    justify-content: center;
+    display: flex;
+}
+
+form {
+    margin-top: 70px;/* 
+    align-content: center;
+    vertical-align: middle; */
+}
+
+div.container-fluid {
+    background-image: url('../../assets/imagens/cadastro.jpg');
+    height: 560px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    opacity: 0.7;
+}
+
+a {
+    border: none;
+    font-size: 1rem;
+    color: white;
+    text-decoration-line: none;
+}

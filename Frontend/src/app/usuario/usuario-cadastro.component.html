@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div class="container">
+    <form [formGroup]="usuarioForm" novalidate>
+      <div class="form-row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" class="form-control" formControlName="nome" placeholder="Nome">
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" formControlName="email" placeholder="Email">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" formControlName="login" placeholder="Login">
+        </div>
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" formControlName="senha" placeholder="Senha">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" formControlName="datadenascimento" placeholder="Data de nascimento">
+        </div>
+        <div class="form-group col-md-4">
+          <select class="form-control" formControlName="sexo" placeholder="Sexo">
+            <option>F</option>
+            <option>M</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <input type="text" class="form-control" formControlName="estado" placeholder="Estado">
+        </div>
+      </div>
+      <div class="btn-toolbar center-block" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+          <button class="btn btn-secondary" (click)="inserirUsuario(usuarioForm.value)" [disabled]="!usuarioForm.valid">Cadastrar</button>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Second group">
+          <button type="button" class="btn btn-secondary"><a [routerLink]="['/home']" routerLinkActive="router-link-active">Voltar</a></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
