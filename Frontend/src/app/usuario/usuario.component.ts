@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService, Retorno } from '../Services/usuario.service'
-import { Usuario } from './usuario';
+import { Usuario } from '../Services/usuario';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -19,7 +19,7 @@ export class UsuarioComponent implements OnInit {
     this.deletaUsuario();
   }
   buscarUsuário() {
-    this.usuarioService.getUsuario('bloodseeker').subscribe(usuario => this.usuario = usuario)
+    this.usuarioService.getUsuarioNome('bloodseeker').subscribe(usuario => this.usuario = usuario)
     return;
   }
 
@@ -32,7 +32,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   atualizarUsuario() {
-    this.usuarioService.getUsuario('bloodfollen').subscribe(usuario => {
+    this.usuarioService.getUsuarioNome('bloodfollen').subscribe(usuario => {
       this.usuario = usuario;
       console.log(this.usuario[0].login);
       this.usuario[0].login = 'doolb';
