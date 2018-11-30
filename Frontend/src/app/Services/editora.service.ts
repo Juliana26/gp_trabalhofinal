@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Editora } from './editora'
-import { Retorno } from './retorno'
+import { Editora } from './editora.model'
+import { Retorno } from './retorno.model'
 
 
 @Injectable({
@@ -12,8 +12,8 @@ export class EditoraService {
 
   constructor(private http: HttpClient) {}
   
-  getUsuarioNome(nome: string): Observable<Editora[]> {
-    return this.http.get<Editora[]>('http://localhost:8000/api/editora/getnome/' + nome);
+  getUsuarioNome(nome: string): Observable<Editora> {
+    return this.http.get<Editora>('http://localhost:8000/api/editora/getnome/' + nome);
   }
 
   insertUsuario(editora: Editora): Observable<Retorno> {

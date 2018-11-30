@@ -11,9 +11,3 @@ export interface Editora {
     }[];
     historia: string;
 }
-
-export class Editora implements Editora {
-    constructor() {
-
-    }
-}

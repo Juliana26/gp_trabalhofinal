@@ -1,7 +1,7 @@
 exports.servicoUsuario = function servicoUsuario(service, app, MongoClient, url, base, colecao) {
   //buscar dados usuário por login
   app.route('/api/' + service + '/getlogin/:login').get((req, res) => {
-    var query = { login: req.params.login };
+    var query = { "login": `"${req.params}"` };
     console.log(req.params.login);
     //-------------------base de dados-----------------
     MongoClient.connect(url, function (err, db) {
@@ -18,7 +18,7 @@ exports.servicoUsuario = function servicoUsuario(service, app, MongoClient, url,
   });
   //buscar dados usuário por nome
   app.route('/api/' + service + '/getnome/:nome').get((req, res) => {
-    var query = { nome: req.params.nome };
+    var query = { "nome": `"${req.params}"` };
     console.log(req.params.nome);
     //-------------------base de dados-----------------
     MongoClient.connect(url, function (err, db) {
@@ -51,7 +51,7 @@ exports.servicoUsuario = function servicoUsuario(service, app, MongoClient, url,
   });
   //altera usuário por nome
   app.route('/api/' + service + '/update/:nome').put((req, res) => {
-    var myquery = { nome: req.params.nome };
+    var myquery = { "nome": `"${req.params}"` };
     delete req.body._id;
     var newvalues = { $set: req.body };
     console.log(myquery);
@@ -71,7 +71,7 @@ exports.servicoUsuario = function servicoUsuario(service, app, MongoClient, url,
   });
 
   app.route('/api/' + service + '/remove/:nome').delete((req, res) => {
-    var myquery = { nome: req.params.nome };
+    var myquery = { "nome": `"${req.params}"` };
     //--------------------base de dados---------------
     MongoClient.connect(url, function (err, db) {
       if (err) throw err;

@@ -1,7 +1,7 @@
 exports.servicoAutor = function servicoAutor(service, app, MongoClient, url, base, colecao) {
     //buscar dados autor por nome
     app.route('/api/' + service + '/getnome/:nome').get((req, res) => {
-      var query = { nome: req.params.nome };
+      var query = { "nome": `"${req.params}"` };
       //-------------------base de dados-----------------
       MongoClient.connect(url, function (err, db) {
         if (err) console.log(err);
@@ -32,7 +32,7 @@ exports.servicoAutor = function servicoAutor(service, app, MongoClient, url, bas
     });
     //altera autor por nome
     app.route('/api/' + service + '/update/:nome').put((req, res) => {
-      var myquery = { nome: req.params.nome };
+      var myquery = { "nome": `"${req.params}"` };
       delete req.body._id;
       var newvalues = { $set: req.body };
       console.log(myquery);
@@ -52,7 +52,7 @@ exports.servicoAutor = function servicoAutor(service, app, MongoClient, url, bas
     });
     //remover autor por nome
     app.route('/api/' + service + '/remove/:nome').delete((req, res) => {
-      var myquery = { nome: req.params.nome };
+      var myquery = { "nome": `"${req.params}"` };
       //--------------------base de dados---------------
       MongoClient.connect(url, function (err, db) {
         if (err) throw err;

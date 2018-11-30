@@ -4,13 +4,13 @@ div.container{
 }
 
 form {
-    margin-top: 70px;
+    margin-top: 70px;/* 
     align-content: center;
-    vertical-align: middle;
+    vertical-align: middle; */
 }
 
 div.container-fluid {
-    background-image: url('../../assets/imagens/cadastro.jpg');
+    background-image: url('../../../assets/imagens/cadastro.jpg');
     height: 560px;
     background-position: center;
     background-repeat: no-repeat;

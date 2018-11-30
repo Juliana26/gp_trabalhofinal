@@ -1,7 +1,7 @@
 const servUsuario = require('./usuario');
-const servLivro = require('./usuario');
-const servEditora = require('./usuario');
-const servAutor = require('./usuario');
+const servLivro = require('./livro');
+const servEditora = require('./editora');
+const servAutor = require('./autor');
 
 const express = require('express');
 const app = express();

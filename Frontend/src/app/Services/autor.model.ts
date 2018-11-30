@@ -5,7 +5,3 @@ export interface Autor {
     data_falecimento: string;
     curiosidades: string;
 }
-export class Autor implements Autor{
-    constructor(){
-    }
-}

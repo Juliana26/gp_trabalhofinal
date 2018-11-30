@@ -39,7 +39,3 @@ export interface Usuario {
         comentários: string
     }[];
 }
-export class Usuario implements Usuario{
-    constructor(){
-    }
-}

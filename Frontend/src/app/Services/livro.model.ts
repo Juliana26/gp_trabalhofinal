@@ -5,11 +5,11 @@ export interface Livro {
     autor: {
         id_autor: number;
         nome: string;
-    }[];
+    };
     editora: {
         id_editora: number;
         nome: string;
-    }[];
+    };
     sinopse: string;
     comentarios: {
         id_autor: string;
@@ -17,9 +17,4 @@ export interface Livro {
         autor_comentario: string;        
     }[];
     avaliacao: number;
-}
-export class Livro implements Livro{
-    constructor(){
-        
-    }
 }

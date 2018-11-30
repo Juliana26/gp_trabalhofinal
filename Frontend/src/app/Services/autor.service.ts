@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Autor } from './autor'
-import { Retorno } from './retorno'
+import { Autor } from './autor.model'
+import { Retorno } from './retorno.model'
 
 
 @Injectable({
@@ -12,8 +12,8 @@ export class AutorService {
 
   constructor(private http: HttpClient) {}
   
-  getUsuarioNome(nome: string): Observable<Autor[]> {
-    return this.http.get<Autor[]>('http://localhost:8000/api/autor/getnome/' + nome);
+  getUsuarioNome(nome: string): Observable<Autor> {
+    return this.http.get<Autor>('http://localhost:8000/api/autor/getnome/' + nome);
   }
 
   insertUsuario(autor: Autor): Observable<Retorno> {

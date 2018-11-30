@@ -1,7 +1,7 @@
 exports.servicoLivro = function servicoLivro(service, app, MongoClient, url, base, colecao) {
   //buscar dados livro por nome
   app.route('/api/' + service + '/gettitulo/:titulo').get((req, res) => {
-    var query = { titulo: req.params.titulo };
+    var query = { "titulo": `"${req.params}"` };
     //-------------------base de dados-----------------
     MongoClient.connect(url, function (err, db) {
       if (err) console.log(err);
@@ -32,7 +32,7 @@ exports.servicoLivro = function servicoLivro(service, app, MongoClient, url, bas
   });
   //altera livro por titulo
   app.route('/api/' + service + '/update/:titulo').put((req, res) => {
-    var myquery = { titulo: req.params.titulo };
+    var myquery = { "titulo": `"${req.params}"` };
     delete req.body._id;
     var newvalues = { $set: req.body };
     console.log(myquery);
@@ -52,7 +52,7 @@ exports.servicoLivro = function servicoLivro(service, app, MongoClient, url, bas
   });
   //remover livro por titulo
   app.route('/api/' + service + '/remove/:titulo').delete((req, res) => {
-    var myquery = { titulo: req.params.titulo };
+    var myquery = { "titulo": `"${req.params}"` };
     //--------------------base de dados---------------
     MongoClient.connect(url, function (err, db) {
       if (err) throw err;
