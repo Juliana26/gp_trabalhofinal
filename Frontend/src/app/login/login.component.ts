@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { UsuarioService } from '../../Services/usuario.service';
+import { UsuarioService } from '../Services/usuario.service';
 
 import { Login } from './login.model'
-import { Usuario } from '../usuario.model'
+import { Usuario } from '../Services/usuario.model'
 
 
 @Component({
@@ -15,11 +15,9 @@ import { Usuario } from '../usuario.model'
 })
 export class LoginComponent implements OnInit {
 
-  loginUsuario: Login  
-  usuario: any
+  loginUsuario: Login
+  usuarioLogado: Usuario
   formLogin: FormGroup
-
-  isRedefinirSenha: boolean = false
 
   constructor(private usuarioService: UsuarioService, private router: Router, private formBuilder: FormBuilder) { }
 
@@ -28,24 +26,28 @@ export class LoginComponent implements OnInit {
       login: this.formBuilder.control('', [Validators.required]),
       senha: this.formBuilder.control('', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')])
     })
-    this.loginUsuario = this.formLogin.value
   }
 
   logar(user: Login) {
-    this.buscarUsuariobyLogin(user)
-    if(this.usuario.login === user.login && this.usuario.senha === user.senha){
-      this.router.navigate(['home']);
-    }
-    else {
-      console.log('Usuário não cadastrado');
-    }
-
+    this.loginUsuario = user
+    this.usuarioService.getUsuarioLogin(user.login).subscribe(usuario => {
+      this.usuarioLogado = usuario[0]
+      this.isLogged()
+    })
   }
 
-  buscarUsuariobyLogin(user: Login){
-    console.log(this.usuario)
-    this.usuarioService.getUsuarioLogin(user.login).subscribe(usuario => this.usuario = usuario)
-    console.log(this.usuario)
+  isLogged() {
+    if (this.usuarioLogado.senha == this.loginUsuario.senha && this.usuarioLogado.ativo) {
+      localStorage.setItem('login', this.usuarioLogado.login)
+      this.router.navigate(['/home'])
+    } else {
+      if(this.usuarioLogado.ativo === false){
+        alert("Usuário inativo! Por favor, defina uma nova senha.")
+        this.router.navigate(['/redefineSenha'])
+      } else {
+        alert('Dados inválidos!')
+        this.router.navigate(['/login'])
+      }
+    }
   }
-
 }

@@ -13,7 +13,7 @@ export class LivroService {
   constructor(private http: HttpClient) {}
   
   getLivroNome(titulo: string): Observable<Livro> {
-    return this.http.get<Livro>('http://localhost:8000/api/livro/getnome/' + titulo);
+    return this.http.get<Livro>('http://localhost:8000/api/livro/gettitulo/' + titulo);
   }
 
   insertLivro(livro: Livro): Observable<Retorno> {

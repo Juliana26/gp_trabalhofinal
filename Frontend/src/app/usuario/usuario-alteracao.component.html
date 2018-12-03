@@ -2,35 +2,30 @@
   <div class="container">
     <form [formGroup]="usuarioForm" novalidate>
       <div class="form-row">
-        <div class="from-group col-md-10">
-          <p>
-            <span>Aviso!</span> A senha deve conter no mínimo 6 caracteres incluindo letras maiúsculas, minúsculas e letras.
-          </p>
-        </div>
         <div class="form-group col-md-6">
-          <label>Login <span>*</span></label>
+          <label>Login</label>
           <input type="text" class="form-control" formControlName="login">
         </div>
         <div class="form-group col-md-6">
-          <label>Senha <span>*</span></label>
+          <label>Senha</label>
           <input type="password" class="form-control" formControlName="senha">
         </div>
       </div>
       <div class="form-row">
         <div class="col-md-6">
           <div class="form-group">
-            <label>Nome <span>*</span></label>
+            <label>Nome</label>
             <input type="text" class="form-control" formControlName="nome">
           </div>
         </div>
         <div class="form-group col-md-6">
-          <label>Email <span>*</span></label>
+          <label>Email</label>
           <input type="text" class="form-control" formControlName="email">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label>Data de Nascimento <span>*</span></label>
+          <label>Data de Nascimento</label>
           <input type="text" class="form-control" formControlName="datadenascimento">
         </div>
         <div class="form-group col-md-4">
@@ -44,17 +39,15 @@
           <label>Estado</label>
           <input type="text" class="form-control" formControlName="estado">
         </div>
-        <div class="col-md-6">
-          <p>
-            <span>*</span> Preenchimento obrigatório
-          </p>
-        </div>
       </div>
       <div class="btn-toolbar center-block" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
-          <button class="btn btn-secondary" (click)="inserirUsuario(usuarioForm.value)" [disabled]="usuarioForm.invalid">Salvar</button>
+          <button class="btn btn-secondary" (click)="atualizarUsuario(usuarioForm.value)" [disabled]="!usuarioForm.valid">Salvar</button>
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Second group">
+          <button class="btn btn-secondary" (click)="desativarConta()">Desativar conta</button>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Third group">
           <button type="button" class="btn btn-secondary"><a [routerLink]="['/home']" routerLinkActive="router-link-active">Voltar</a></button>
         </div>
       </div>

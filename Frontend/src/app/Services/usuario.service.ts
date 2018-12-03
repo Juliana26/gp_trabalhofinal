@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from './usuario.model'
 import { Retorno } from './retorno.model'
-// creation and utility methods
 import { Observable } from 'rxjs';
-// operators all come from `rxjs/operators`
-import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -29,10 +26,10 @@ export class UsuarioService {
   }
 
   updateUsuario(usuario: Usuario): Observable<Retorno> {
-    return this.http.put<Retorno>('http://localhost:8000/api/usuario/update/' + usuario.nome, usuario);
+    return this.http.put<Retorno>('http://localhost:8000/api/usuario/update/' + usuario.login, usuario);
   }
 
-  deleteUsuario(nome: string):Observable<Retorno> {
-    return this.http.delete<Retorno>('http://localhost:8000/api/usuario/remove/' + nome);
+  deleteUsuario(login: string):Observable<Retorno> {
+    return this.http.delete<Retorno>('http://localhost:8000/api/usuario/remove/' + login);
   }
 }

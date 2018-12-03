@@ -12,4 +12,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  usuariologado() {
+    if(localStorage.getItem('login') != 'null'){
+      return true;
+    }
+    return false;
+  }
+
 }

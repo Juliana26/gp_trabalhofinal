@@ -1,9 +1,9 @@
 exports.servicoLivro = function servicoLivro(service, app, MongoClient, url, base, colecao) {
   //buscar dados livro por nome
   app.route('/api/' + service + '/gettitulo/:titulo').get((req, res) => {
-    var query = { "titulo": `"${req.params}"` };
+    var query = { "titulo": req.params.login };
     //-------------------base de dados-----------------
-    MongoClient.connect(url, function (err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
       if (err) console.log(err);
       var dbo = db.db(base);
       dbo.collection(colecao).find(query).toArray(function (err, result) {
@@ -18,7 +18,7 @@ exports.servicoLivro = function servicoLivro(service, app, MongoClient, url, bas
   app.route('/api/' + service + '/insert/').post((req, res) => {
     var myobj = req.body;
     //--------------------base de dados--------------
-    MongoClient.connect(url, function (err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
       if (err) throw err;
       var dbo = db.db(base);
       dbo.collection(colecao).insertOne(myobj, function (err, res) {
@@ -32,13 +32,13 @@ exports.servicoLivro = function servicoLivro(service, app, MongoClient, url, bas
   });
   //altera livro por titulo
   app.route('/api/' + service + '/update/:titulo').put((req, res) => {
-    var myquery = { "titulo": `"${req.params}"` };
+    var myquery = { "titulo": req.params.login };
     delete req.body._id;
     var newvalues = { $set: req.body };
     console.log(myquery);
     console.log(newvalues);
     //--------------------base de dados---------
-    MongoClient.connect(url, function (err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
       if (err) throw err;
       var dbo = db.db(base);
       dbo.collection(colecao).updateOne(myquery, newvalues, function (err, res) {
@@ -52,9 +52,9 @@ exports.servicoLivro = function servicoLivro(service, app, MongoClient, url, bas
   });
   //remover livro por titulo
   app.route('/api/' + service + '/remove/:titulo').delete((req, res) => {
-    var myquery = { "titulo": `"${req.params}"` };
+    var myquery = { "titulo": req.params.login };
     //--------------------base de dados---------------
-    MongoClient.connect(url, function (err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
       if (err) throw err;
       var dbo = db.db(base);
       dbo.collection(colecao).deleteOne(myquery, function (err, obj) {

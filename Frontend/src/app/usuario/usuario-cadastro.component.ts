@@ -27,23 +27,23 @@ export class UsuarioCadastroComponent implements OnInit {
       nome: this.fb.control('', [Validators.required, Validators.minLength(5)]),
       email: this.fb.control('', [Validators.required, Validators.email]),
       login: this.fb.control('', [Validators.required]),
-      senha: this.fb.control('', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]),
+      senha: this.fb.control('', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'), Validators.minLength(6)]),
       datadenascimento: this.fb.control('', [Validators.required]),
-      sexo: this.fb.control('', [Validators.required]),
-      estado: this.fb.control('', [Validators.required, Validators.maxLength(2)]),
+      sexo: this.fb.control(''),
+      estado: this.fb.control('', [Validators.maxLength(2)]),
       ativo: this.fb.control('true')
     })
   }
-
-  inserirUsuario() {
-    console.log(this.usuarioForm.value)
-    return this.usuarioService.insertUsuario(this.usuarioForm.value)
-    .subscribe(retorno => {
-      this.retorno = retorno,
-      this.router.navigate(['/login'])
-    })
-  }
   
+  inserirUsuario() {
+    return this.usuarioService.insertUsuario(this.usuarioForm.value)
+      .subscribe(retorno => {
+        this.retorno = retorno
+        alert("Usuário inserido com sucesso!")
+        this.router.navigate(['/login'])
+      })
+  }
+
   buscarUsuario(nome: string) {
     this.usuarioService.getUsuarioNome(nome).subscribe(usuario => this.usuario = usuario)
   }
@@ -51,19 +51,5 @@ export class UsuarioCadastroComponent implements OnInit {
   buscarUsuarioLogin(login: string) {
     this.usuarioService.getUsuarioNome(login).subscribe(usuario => this.usuario = usuario)
   }
-
-  /*
-  atualizarUsuario() {
-    this.usuarioService.getUsuarioNome('bloodfollen').subscribe(usuario => {
-      this.usuario = usuario;
-      console.log(this.usuario[0].login);
-      this.usuario[0].login = 'doolb';
-      console.log(this.usuario[0].login);
-      this.usuarioService.updateUsuario(this.usuario[0]).subscribe(retorno => this.retorno = retorno);
-    })
-  }
-  deletaUsuario(){
-    this.usuarioService.deleteUsuario('bloodfollen').subscribe(retorno => this.retorno = retorno);
-  } */
 }
 

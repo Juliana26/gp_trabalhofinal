@@ -4,8 +4,8 @@ export interface Usuario {
     login: string;
     senha: string;
     nome: string;
-    data_nascimento: Date;
-    ativo: number;
+    datadenascimento: Date;
+    ativo: boolean;
     tipo: string[];
     sexo: string;
     estado: string;
