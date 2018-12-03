@@ -24,10 +24,10 @@ export class LivrosComponent implements OnInit {
   ngOnInit() {
     this.livroForm = this.fb.group({
       titulo: this.fb.control('', [Validators.required, Validators.minLength(5)]),
-      autor: this.fb.control('', [Validators.required]),
-      editora: this.fb.control('', [Validators.required]),
-      sinopse: this.fb.control('', [Validators.required]),
-      avaliacao: this.fb.control('', [Validators.required]),
+      autor: this.fb.control('',),
+      editora: this.fb.control('',),
+      sinopse: this.fb.control('',),
+      avaliacao: this.fb.control('',),
     })
   }
 
@@ -37,6 +37,13 @@ export class LivrosComponent implements OnInit {
     .subscribe(retorno => {
       this.retorno = retorno,
       this.router.navigate(['/livro'])
+    })
+  }
+
+  buscarLivro(titulo: string) {
+    this.livroService.getLivroNome(titulo).subscribe(book => {
+      this.livro = book
+      console.log(book)
     })
   }
 

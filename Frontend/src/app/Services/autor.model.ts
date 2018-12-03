@@ -1,7 +1,7 @@
 export interface Autor {
     _id:string;
     nome: string;
-    data_nascimento: Date;
+    datadenascimento: Date;
     data_falecimento: string;
     curiosidades: string;
 }

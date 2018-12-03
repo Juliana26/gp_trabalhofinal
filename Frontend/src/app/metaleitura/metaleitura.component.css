@@ -10,7 +10,7 @@ form {
 }
 
 div.container-fluid {
-    background-image: url('../../../assets/imagens/cadastro.jpg');
+    background-image: url('../../assets/imagens/cadastro.jpg');
     height: 560px;
     background-position: center;
     background-repeat: no-repeat;

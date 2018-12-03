@@ -3,8 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
 import { Router } from '@angular/router'
 import { UsuarioService } from 'src/app/Services/usuario.service';
-import { Usuario } from '../../Services/usuario.model'
-import { Retorno } from '../../Services/retorno.model'
+import { Usuario } from '../Services/usuario.model'
+import { Retorno } from '../Services/retorno.model'
 
 import { MetaLeitura } from './metaleitura.model'
 

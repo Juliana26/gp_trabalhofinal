@@ -25,3 +25,11 @@ a {
     color: white;
     text-decoration-line: none;
 }
+
+label {
+    color: black;
+}
+
+span{
+    font-weight: bold
+}

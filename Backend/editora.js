@@ -1,9 +1,9 @@
 exports.servicoEditora = function servicoEditora(service, app, MongoClient, url, base, colecao) {
     //buscar dados editora por nome
     app.route('/api/' + service + '/getnome/:nome').get((req, res) => {
-      var query = { "nome": `"${req.params}"` };
+      var query = { "nome": req.params.login };
       //-------------------base de dados-----------------
-      MongoClient.connect(url, function (err, db) {
+      MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
         if (err) console.log(err);
         var dbo = db.db(base);
         dbo.collection(colecao).find(query).toArray(function (err, result) {
@@ -18,7 +18,7 @@ exports.servicoEditora = function servicoEditora(service, app, MongoClient, url,
     app.route('/api/' + service + '/insert/').post((req, res) => {
       var myobj = req.body;
       //--------------------base de dados--------------
-      MongoClient.connect(url, function (err, db) {
+      MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
         if (err) throw err;
         var dbo = db.db(base);
         dbo.collection(colecao).insertOne(myobj, function (err, res) {
@@ -32,13 +32,13 @@ exports.servicoEditora = function servicoEditora(service, app, MongoClient, url,
     });
     //altera editora por nome
     app.route('/api/' + service + '/update/:nome').put((req, res) => {
-      var myquery = { "nome": `"${req.params}"` };
+      var myquery = { "nome": req.params.login };
       delete req.body._id;
       var newvalues = { $set: req.body };
       console.log(myquery);
       console.log(newvalues);
       //--------------------base de dados---------
-      MongoClient.connect(url, function (err, db) {
+      MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
         if (err) throw err;
         var dbo = db.db(base);
         dbo.collection(colecao).updateOne(myquery, newvalues, function (err, res) {
@@ -52,9 +52,9 @@ exports.servicoEditora = function servicoEditora(service, app, MongoClient, url,
     });
     //remover editora por nome
     app.route('/api/' + service + '/remove/:nome').delete((req, res) => {
-      var myquery = { "nome": `"${req.params}"` };
+      var myquery = { "nome": req.params.login };
       //--------------------base de dados---------------
-      MongoClient.connect(url, function (err, db) {
+      MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
         if (err) throw err;
         var dbo = db.db(base);
         dbo.collection(colecao).deleteOne(myquery, function (err, obj) {
