@@ -32,6 +32,6 @@ export interface Usuario {
         nome_livro: string,
         inicio_leitura: Date,
         termino_leitura: Date,
-        comentários: string
+        comentarios: string
     }[];
 }

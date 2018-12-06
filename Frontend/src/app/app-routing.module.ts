@@ -5,7 +5,7 @@ import { UsuarioCadastroComponent } from './usuario/usuario-cadastro.component';
 import { LoginComponent } from './login/login.component';
 import { RedefineSenhaComponent } from './redefine-senha/redefine-senha.component';
 import { MetaleituraCadastroComponent } from './metaleitura/metaleitura-cadastro.component';
-import { PlanoleituraCadastroComponent } from './planoleitura/planoleitura-cadastro.component';
+import { PlanoleituracadastroComponent } from './planoleitura/planoleitura-cadastro.component';
 import { EditoraComponent } from './editora/editora.component';
 import { LivrosCadastroComponent } from './livros/livros-cadastro.component';
 import { AboutComponent } from './about/about.component';
@@ -14,6 +14,8 @@ import { LivrosAlteracaoComponent } from './livros/livros-alteracao.component';
 import { LivrosListaComponent } from './livros/livros-lista.component';
 import { MetaleituraAlteracaoComponent } from './metaleitura/metaleitura-alteracao.component';
 import { ListaMetasLeituraComponent } from './metaleitura/listametasleitura.component';
+import { PlanoleituraalteracaoComponent } from './planoleitura/planoleitura-alteracao.component';
+import { ListaplanosleituraComponent } from './planoleitura/listaplanosleitura.component';
 
 
 const routes: Routes = [
@@ -27,7 +29,9 @@ const routes: Routes = [
   {path: 'metaleituracadastro', component: MetaleituraCadastroComponent},
   {path: 'metaleituraalteracao', component: MetaleituraAlteracaoComponent},
   {path: 'perfil', component: UsuarioAlteracaoComponent},
-  {path: 'planoleituracadastro', component: PlanoleituraCadastroComponent},
+  {path: 'periodoleituracadastro', component: PlanoleituracadastroComponent},
+  {path: 'periodoleituraalteracao', component: PlanoleituraalteracaoComponent},
+  {path: 'listaperiodoleitura', component: ListaplanosleituraComponent},
   {path: 'redefineSenha', component: RedefineSenhaComponent},
   {path: 'alterarLivro', component: LivrosAlteracaoComponent},
   {path: 'listaLivro', component: LivrosListaComponent},

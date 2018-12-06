@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PlanoLeitura } from '../planoleitura.model';
 
 @Component({
   selector: 'app-listaplanoleitura',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listaplanoleitura.component.css']
 })
 export class ListaplanoleituraComponent implements OnInit {
+
+  @Input() planoleitura : PlanoLeitura;
 
   constructor() { }
 

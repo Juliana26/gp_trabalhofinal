@@ -1,0 +1,9 @@
+<div class="container-fluid">
+        <div class="container lista">
+            <div class="row col-lg-12">
+                <div *ngFor="let planoleitura of planosleitura" class="form-group col-sm-4 box">
+                    <app-listaplanoleitura [planoleitura]="planoleitura"></app-listaplanoleitura>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -11,7 +11,8 @@ form {
 
 div.container-fluid {
     background-image: url('../../assets/imagens/cadastro.jpg');
-    height: 560px;
+    height: inherit;
+    min-height: 650px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -28,4 +29,17 @@ a {
 
 span {
     font-weight: bold;
+    color: black;
+}
+
+label, p{
+    color:black;
+}
+
+div.lista {
+    background-color: white
+}
+
+div.box {
+    margin: 10px 0px;
 }
