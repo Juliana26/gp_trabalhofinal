@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/redefineSenha'])
       } else {
         alert('Dados inválidos!')
-        this.router.navigate(['/login'])
       }
     }
   }

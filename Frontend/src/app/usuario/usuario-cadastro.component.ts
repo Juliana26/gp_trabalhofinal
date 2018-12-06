@@ -23,8 +23,12 @@ export class UsuarioCadastroComponent implements OnInit {
   constructor(public usuarioService: UsuarioService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.buildForm()
+  }
+
+  buildForm() {
     this.usuarioForm = this.fb.group({
-      nome: this.fb.control('', [Validators.required, Validators.minLength(5)]),
+      nome: this.fb.control('', [Validators.required]),
       email: this.fb.control('', [Validators.required, Validators.email]),
       login: this.fb.control('', [Validators.required]),
       senha: this.fb.control('', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'), Validators.minLength(6)]),
@@ -36,17 +40,19 @@ export class UsuarioCadastroComponent implements OnInit {
   }
   
   inserirUsuario() {
-    return this.usuarioService.insertUsuario(this.usuarioForm.value)
+    this.buscarUsuarioLogin(this.usuarioForm.value.login);
+    if(this.usuario.login === this.usuarioForm.value.login){
+      alert('Login não disponível! Por favor escolha outro e tente novamente!');
+    } else {
+      return this.usuarioService.insertUsuario(this.usuarioForm.value)
       .subscribe(retorno => {
         this.retorno = retorno
         alert("Usuário inserido com sucesso!")
+        this.buildForm()
         this.router.navigate(['/login'])
       })
-  }
-
-  buscarUsuario(nome: string) {
-    this.usuarioService.getUsuarioNome(nome).subscribe(usuario => this.usuario = usuario)
-  }
+    }    
+  } 
 
   buscarUsuarioLogin(login: string) {
     this.usuarioService.getUsuarioNome(login).subscribe(usuario => this.usuario = usuario)

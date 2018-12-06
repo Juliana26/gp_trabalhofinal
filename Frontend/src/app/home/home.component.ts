@@ -10,13 +10,15 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.usuariologado()
   }
 
-  usuariologado() {
-    if(localStorage.getItem('login') != 'null'){
+  usuariologado() : boolean {
+    if (localStorage.getItem('login') !== 'null') {
       return true;
+    } else {
+      return false;
     }
-    return false;
   }
 
 }

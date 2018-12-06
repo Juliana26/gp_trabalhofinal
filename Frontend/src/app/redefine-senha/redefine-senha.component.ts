@@ -36,7 +36,6 @@ export class RedefineSenhaComponent implements OnInit {
         this.usuario = usuario[0]
         this.usuario.ativo = true
         this.usuario.senha = redefine.senha
-        console.log(this.usuario);
         this.usuarioService.updateUsuario(this.usuario).subscribe(retorno => {
           this.retorno = retorno
           alert("Redefinição de senha realizada com sucesso!")

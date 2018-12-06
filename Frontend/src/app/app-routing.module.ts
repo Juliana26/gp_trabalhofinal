@@ -4,13 +4,17 @@ import { HomeComponent } from './home/home.component';
 import { UsuarioCadastroComponent } from './usuario/usuario-cadastro.component';
 import { LoginComponent } from './login/login.component';
 import { RedefineSenhaComponent } from './redefine-senha/redefine-senha.component';
-import { MetaleituraComponent } from './metaleitura/metaleitura.component';
-import { PlanoleituraComponent } from './planoleitura/planoleitura.component';
+import { MetaleituraCadastroComponent } from './metaleitura/metaleitura-cadastro.component';
+import { PlanoleituraCadastroComponent } from './planoleitura/planoleitura-cadastro.component';
 import { EditoraComponent } from './editora/editora.component';
-import { LivrosComponent } from './livros/livros.component';
-import { FaqComponent } from './faq/faq.component';
+import { LivrosCadastroComponent } from './livros/livros-cadastro.component';
 import { AboutComponent } from './about/about.component';
 import { UsuarioAlteracaoComponent } from './usuario/usuario-alteracao.component';
+import { LivrosAlteracaoComponent } from './livros/livros-alteracao.component';
+import { LivrosListaComponent } from './livros/livros-lista.component';
+import { MetaleituraAlteracaoComponent } from './metaleitura/metaleitura-alteracao.component';
+import { ListaMetasLeituraComponent } from './metaleitura/listametasleitura.component';
+
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,13 +22,16 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'cadastrar', component: UsuarioCadastroComponent},
   {path: 'editora', component: EditoraComponent},
-  {path: 'faq', component: FaqComponent},
-  {path: 'livro', component: LivrosComponent},
+  {path: 'cadastrarLivro', component: LivrosCadastroComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'metaleitura', component: MetaleituraComponent},
+  {path: 'metaleituracadastro', component: MetaleituraCadastroComponent},
+  {path: 'metaleituraalteracao', component: MetaleituraAlteracaoComponent},
   {path: 'perfil', component: UsuarioAlteracaoComponent},
-  {path: 'planoleitura', component: PlanoleituraComponent},
-  {path: 'redefineSenha', component: RedefineSenhaComponent}
+  {path: 'planoleituracadastro', component: PlanoleituraCadastroComponent},
+  {path: 'redefineSenha', component: RedefineSenhaComponent},
+  {path: 'alterarLivro', component: LivrosAlteracaoComponent},
+  {path: 'listaLivro', component: LivrosListaComponent},
+  {path: 'listametaleitura', component: ListaMetasLeituraComponent}
 ];
 
 @NgModule({

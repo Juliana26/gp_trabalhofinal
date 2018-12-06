@@ -9,11 +9,11 @@ import { Retorno } from '../Services/retorno.model';
 
 
 @Component({
-  selector: 'app-livros',
-  templateUrl: './livros.component.html',
+  selector: 'app-livros-cadastro',
+  templateUrl: './livros-cadastro.component.html',
   styleUrls: ['./livros.component.css']
 })
-export class LivrosComponent implements OnInit {
+export class LivrosCadastroComponent implements OnInit {
 
   livroForm: FormGroup
   livro: Livro
@@ -22,28 +22,32 @@ export class LivrosComponent implements OnInit {
   constructor(private livroService: LivroService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.buildForm()
+  }
+
+  buildForm() {
     this.livroForm = this.fb.group({
-      titulo: this.fb.control('', [Validators.required, Validators.minLength(5)]),
-      autor: this.fb.control('',),
-      editora: this.fb.control('',),
-      sinopse: this.fb.control('',),
-      avaliacao: this.fb.control('',),
+      titulo: this.fb.control('', Validators.required),
+      autor: this.fb.control(''),
+      editora: this.fb.control(''),
+      sinopse: this.fb.control(''),
+      avaliacao: this.fb.control(''),
     })
   }
 
   inserirLivro() {
-    console.log(this.livroForm.value)
     return this.livroService.insertLivro(this.livroForm.value)
     .subscribe(retorno => {
       this.retorno = retorno,
-      this.router.navigate(['/livro'])
+      alert("Livro cadastrado com sucesso")
+      this.buildForm()
+      this.router.navigate(['/listaLivro'])
     })
   }
 
   buscarLivro(titulo: string) {
-    this.livroService.getLivroNome(titulo).subscribe(book => {
+    this.livroService.getLivroTitulo(titulo).subscribe(book => {
       this.livro = book
-      console.log(book)
     })
   }
 

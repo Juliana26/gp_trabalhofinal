@@ -2,7 +2,7 @@
   <div class="hero-text">
     <h1>Bem vindo ao Book Club!</h1>
     <p *ngIf="usuariologado()">Pegue um bom livro, uma xícara de café e relaxe!</p>
-    <div class="btn-toolbar center-block" role="toolbar" aria-label="Toolbar with button groups" *ngIf="!usuariologado()">
+    <div *ngIf="!usuariologado()" class="btn-toolbar center-block" role="toolbar" aria-label="Toolbar with button groups">
       <div class="btn-group mr-2" role="group" aria-label="First group">
         <button type="button" class="btn btn-secondary"><a [routerLink]="['/login']" routerLinkActive="router-link-active" >Entrar</a></button>
       </div>

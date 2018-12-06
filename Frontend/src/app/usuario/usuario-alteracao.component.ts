@@ -27,12 +27,12 @@ export class UsuarioAlteracaoComponent implements OnInit {
 
   ngOnInit() {
     this.usuarioForm = this.fb.group({
-      nome: this.fb.control('', [Validators.required, Validators.minLength(5)]),
+      nome: this.fb.control('', [Validators.required]),
       email: this.fb.control('', [Validators.required, Validators.email]),
       login: this.fb.control({value: '', disabled: true}, [Validators.required]),
       senha: this.fb.control({value: '', disabled: true}, [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]),
       datadenascimento: this.fb.control('', [Validators.required]),
-      sexo: this.fb.control('F'),
+      sexo: this.fb.control(''),
       estado: this.fb.control('', [Validators.maxLength(2)]),
       ativo: this.fb.control('true')
     })
@@ -63,9 +63,13 @@ export class UsuarioAlteracaoComponent implements OnInit {
   atualizarUsuario() {
     this.usuarioService.getUsuarioLogin(this.usuario.login).subscribe(usuario => {
       this.usuario = usuario[0]
-      console.log(this.usuario)
-      console.log(this.usuarioForm.value)
-      this.usuarioService.updateUsuario(this.usuarioForm.value).subscribe(retorno => {
+      this.usuario.ativo=this.usuarioForm.value.ativo;
+      this.usuario.datadenascimento=this.usuarioForm.value.datadenascimento;
+      this.usuario.email=this.usuarioForm.value.email;
+      this.usuario.estado=this.usuarioForm.value.estado;
+      this.usuario.nome=this.usuarioForm.value.nome;
+      this.usuario.sexo=this.usuarioForm.value.sexo;
+      this.usuarioService.updateUsuario(this.usuario).subscribe(retorno => {
         this.retorno = retorno
         alert("Dados alterados com sucesso")
       });
@@ -74,7 +78,6 @@ export class UsuarioAlteracaoComponent implements OnInit {
 
   logout() {
     localStorage.setItem('login', 'null');
-    console.log(localStorage.getItem('login'))
     this.router.navigate(['/home'])
   } 
 
@@ -82,7 +85,6 @@ export class UsuarioAlteracaoComponent implements OnInit {
     this.usuarioService.getUsuarioLogin(this.login).subscribe(usuario => {
       this.usuario = usuario[0]
       this.usuario.ativo = false
-      console.log(this.usuario)
       this.usuarioService.updateUsuario(this.usuario).subscribe(retorno => {
         this.retorno = retorno
         alert("Conta desativada com sucesso!")

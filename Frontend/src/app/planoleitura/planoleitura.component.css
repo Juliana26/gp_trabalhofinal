@@ -25,3 +25,7 @@ a {
     color: white;
     text-decoration-line: none;
 }
+
+span {
+    font-weight: bold;
+}

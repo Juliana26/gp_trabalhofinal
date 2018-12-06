@@ -10,17 +10,14 @@ export interface Usuario {
     sexo: string;
     estado: string;
     pretensao_leitura: {
-        id_livro: string,
         nome_livro: string,
         nome_autor: string
     }[];
     leitura_andamento: {
-        id_livro: string,
         nome_livro: string,
         nome_autor: string
     }[];
     leitura_concluida: {
-        id_livro: string,
         nome_livro: string,
         nome_autor: string
     }[];
@@ -32,7 +29,6 @@ export interface Usuario {
         status: string
     }[];
     periodo_leitura: {
-        id_livro: number,
         nome_livro: string,
         inicio_leitura: Date,
         termino_leitura: Date,
