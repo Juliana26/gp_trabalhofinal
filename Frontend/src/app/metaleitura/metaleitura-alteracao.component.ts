@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/Services/usuario.service';
 import { Usuario } from '../Services/usuario.model';
 import { Retorno } from '../Services/retorno.model';
@@ -9,7 +8,6 @@ import { MetaLeitura } from './metaleitura.model';
 import { Livro } from '../Services/livro.model';
 import { Status } from './status.model';
 import { LivroService } from '../Services/livro.service';
-import { ListaMetasLeituraComponent } from './listametasleitura.component';
 
 @Component({
   selector: 'app-metaleitura-alteracao',

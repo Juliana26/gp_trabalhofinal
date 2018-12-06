@@ -22,13 +22,14 @@ import { LivroComponent } from './livros/livro/livro.component';
 import { LivroService } from './Services/livro.service';
 import { MetaleituraAlteracaoComponent } from './metaleitura/metaleitura-alteracao.component';
 import { ListalivrometaleituraComponent } from './metaleitura/listalivrometaleitura/listalivrometaleitura.component';
-import { PlanoleituraAlteracaoComponent } from './planoleitura/planoleitura-alteracao.component';
-import { PlanoleituraCadastroComponent } from './planoleitura/planoleitura-cadastro.component';
+import { PlanoleituraalteracaoComponent } from './planoleitura/planoleitura-alteracao.component';
+import { PlanoleituracadastroComponent } from './planoleitura/planoleitura-cadastro.component';
 import { ListalivroplanoleituraComponent } from './planoleitura/listalivroplanoleitura/listalivroplanoleitura.component';
 import { ListaplanoleituraComponent } from './planoleitura/listaplanoleitura/listaplanoleitura.component';
 import { ListametaleituraComponent } from './metaleitura/listametaleitura/listametaleitura.component';
 import { ListalivroComponent } from './livros/listalivro/listalivro.component';
 import { ListaMetasLeituraComponent } from './metaleitura/listametasleitura.component';
+import { ListaplanosleituraComponent } from './planoleitura/listaplanosleitura.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +43,8 @@ import { ListaMetasLeituraComponent } from './metaleitura/listametasleitura.comp
     RedefineSenhaComponent,
     MetaleituraAlteracaoComponent,
     MetaleituraCadastroComponent,
-    PlanoleituraCadastroComponent,
-    PlanoleituraAlteracaoComponent,
+    PlanoleituracadastroComponent,
+    PlanoleituraalteracaoComponent,
     LivrosAlteracaoComponent,
     LivrosCadastroComponent,
     LivrosListaComponent,
@@ -55,7 +56,8 @@ import { ListaMetasLeituraComponent } from './metaleitura/listametasleitura.comp
     ListaplanoleituraComponent,
     ListametaleituraComponent,
     ListalivroComponent,
-    ListaMetasLeituraComponent
+    ListaMetasLeituraComponent,
+    ListaplanosleituraComponent
   ],
   imports: [
     AppRoutingModule,

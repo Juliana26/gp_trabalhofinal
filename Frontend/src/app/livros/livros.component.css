@@ -12,6 +12,7 @@ form {
 div.container-fluid {
     background-image: url('../../assets/imagens/cadastro.jpg');
     height: inherit;
+    min-height: 650px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
