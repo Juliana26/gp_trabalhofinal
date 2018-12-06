@@ -10,14 +10,25 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { RedefineSenhaComponent } from './redefine-senha/redefine-senha.component';
-import { MetaleituraComponent } from './metaleitura/metaleitura.component';
-import { PlanoleituraComponent } from './planoleitura/planoleitura.component';
+import { MetaleituraCadastroComponent } from './metaleitura/metaleitura-cadastro.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { LivrosComponent } from './livros/livros.component';
+import { LivrosCadastroComponent } from './livros/livros-cadastro.component';
 import { EditoraComponent } from './editora/editora.component';
 import { AboutComponent } from './about/about.component';
-import { FaqComponent } from './faq/faq.component';
 import { UsuarioAlteracaoComponent } from './usuario/usuario-alteracao.component';
+import { LivrosAlteracaoComponent } from './livros/livros-alteracao.component';
+import { LivrosListaComponent } from './livros/livros-lista.component';
+import { LivroComponent } from './livros/livro/livro.component';
+import { LivroService } from './Services/livro.service';
+import { MetaleituraAlteracaoComponent } from './metaleitura/metaleitura-alteracao.component';
+import { ListalivrometaleituraComponent } from './metaleitura/listalivrometaleitura/listalivrometaleitura.component';
+import { PlanoleituraAlteracaoComponent } from './planoleitura/planoleitura-alteracao.component';
+import { PlanoleituraCadastroComponent } from './planoleitura/planoleitura-cadastro.component';
+import { ListalivroplanoleituraComponent } from './planoleitura/listalivroplanoleitura/listalivroplanoleitura.component';
+import { ListaplanoleituraComponent } from './planoleitura/listaplanoleitura/listaplanoleitura.component';
+import { ListametaleituraComponent } from './metaleitura/listametaleitura/listametaleitura.component';
+import { ListalivroComponent } from './livros/listalivro/listalivro.component';
+import { ListaMetasLeituraComponent } from './metaleitura/listametasleitura.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +40,22 @@ import { UsuarioAlteracaoComponent } from './usuario/usuario-alteracao.component
     FooterComponent,
     LoginComponent,
     RedefineSenhaComponent,
-    MetaleituraComponent,
-    PlanoleituraComponent,
-    LivrosComponent,
+    MetaleituraAlteracaoComponent,
+    MetaleituraCadastroComponent,
+    PlanoleituraCadastroComponent,
+    PlanoleituraAlteracaoComponent,
+    LivrosAlteracaoComponent,
+    LivrosCadastroComponent,
+    LivrosListaComponent,
     EditoraComponent,
     AboutComponent,
-    FaqComponent,
+    LivroComponent,
+    ListalivrometaleituraComponent,
+    ListalivroplanoleituraComponent,
+    ListaplanoleituraComponent,
+    ListametaleituraComponent,
+    ListalivroComponent,
+    ListaMetasLeituraComponent
   ],
   imports: [
     AppRoutingModule,
@@ -43,7 +64,10 @@ import { UsuarioAlteracaoComponent } from './usuario/usuario-alteracao.component
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [UsuarioService],
+  providers: [
+    UsuarioService, 
+    LivroService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

@@ -11,7 +11,7 @@ form {
 
 div.container-fluid {
     background-image: url('../../assets/imagens/cadastro.jpg');
-    height: 560px;
+    height: inherit;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -25,3 +25,13 @@ a {
     color: white;
     text-decoration-line: none;
 }
+
+span {
+    font-weight: bold;
+    color: black
+}
+
+p {
+    color: black;
+}
+

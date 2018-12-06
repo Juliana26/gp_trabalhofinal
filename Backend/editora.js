@@ -1,7 +1,7 @@
 exports.servicoEditora = function servicoEditora(service, app, MongoClient, url, base, colecao) {
     //buscar dados editora por nome
     app.route('/api/' + service + '/getnome/:nome').get((req, res) => {
-      var query = { "nome": req.params.login };
+      var query = { "nome": req.params.nome };
       //-------------------base de dados-----------------
       MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
         if (err) console.log(err);
@@ -32,7 +32,7 @@ exports.servicoEditora = function servicoEditora(service, app, MongoClient, url,
     });
     //altera editora por nome
     app.route('/api/' + service + '/update/:nome').put((req, res) => {
-      var myquery = { "nome": req.params.login };
+      var myquery = { "nome": req.params.nome };
       delete req.body._id;
       var newvalues = { $set: req.body };
       console.log(myquery);
@@ -52,7 +52,7 @@ exports.servicoEditora = function servicoEditora(service, app, MongoClient, url,
     });
     //remover editora por nome
     app.route('/api/' + service + '/remove/:nome').delete((req, res) => {
-      var myquery = { "nome": req.params.login };
+      var myquery = { "nome": req.params.nome };
       //--------------------base de dados---------------
       MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
         if (err) throw err;

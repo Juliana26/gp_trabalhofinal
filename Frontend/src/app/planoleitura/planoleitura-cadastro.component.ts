@@ -9,11 +9,11 @@ import { Retorno } from '../Services/retorno.model'
 import { PlanoLeitura } from './planoleitura.model'
 
 @Component({
-  selector: 'app-planoleitura',
-  templateUrl: './planoleitura.component.html',
+  selector: 'app-planoleituracadastro',
+  templateUrl: './planoleitura-cadastro.component.html',
   styleUrls: ['./planoleitura.component.css']
 })
-export class PlanoleituraComponent implements OnInit {
+export class PlanoleituraCadastroComponent implements OnInit {
 
   planoLeituraForm: FormGroup
   planoLeitura: PlanoLeitura

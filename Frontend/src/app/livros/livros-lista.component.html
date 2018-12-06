@@ -1,0 +1,9 @@
+<div class="container-fluid">
+    <div class="container">
+        <ul class="list-group">
+            <li *ngFor="let livro of livros" class="list-group-item">
+                <app-livro [livro]="livro"></app-livro>
+            </li>
+        </ul>
+    </div>
+</div>

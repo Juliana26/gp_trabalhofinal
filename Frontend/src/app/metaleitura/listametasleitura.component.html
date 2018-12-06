@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div class="container lista">
+        <div class="row col-lg-12">
+            <div *ngFor="let metaleitura of metasleitura" class="form-group col-sm-4 box">
+                <app-listametaleitura [metaleitura]="metaleitura"></app-listametaleitura>
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <button class="btn btn-secondary" (click)="inserirMetaLeitura(metaLeituraForm.value)">Iniciar | Continuar leitura</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

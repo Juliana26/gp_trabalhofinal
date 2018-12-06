@@ -1,12 +1,27 @@
 exports.servicoLivro = function servicoLivro(service, app, MongoClient, url, base, colecao) {
   //buscar dados livro por nome
   app.route('/api/' + service + '/gettitulo/:titulo').get((req, res) => {
-    var query = { "titulo": req.params.login };
+    var query = { "titulo": req.params.titulo };
     //-------------------base de dados-----------------
     MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
       if (err) console.log(err);
       var dbo = db.db(base);
       dbo.collection(colecao).find(query).toArray(function (err, result) {
+        if (err) console.log(err);
+        res.send(result);
+        db.close();
+      });
+    });
+    //--------------------------------------------------
+  });
+  //buscar dados de todos os livros
+  app.route('/api/' + service + '/getAll/').get((req, res) => {
+    var query = [ {$sort: {titulo:1} }];
+    //-------------------base de dados-----------------
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+      if (err) console.log(err);
+      var dbo = db.db(base);
+      dbo.collection(colecao).aggregate(query).toArray(function (err, result) {
         if (err) console.log(err);
         res.send(result);
         db.close();
@@ -32,7 +47,7 @@ exports.servicoLivro = function servicoLivro(service, app, MongoClient, url, bas
   });
   //altera livro por titulo
   app.route('/api/' + service + '/update/:titulo').put((req, res) => {
-    var myquery = { "titulo": req.params.login };
+    var myquery = { "titulo": req.params.titulo };
     delete req.body._id;
     var newvalues = { $set: req.body };
     console.log(myquery);
@@ -52,7 +67,7 @@ exports.servicoLivro = function servicoLivro(service, app, MongoClient, url, bas
   });
   //remover livro por titulo
   app.route('/api/' + service + '/remove/:titulo').delete((req, res) => {
-    var myquery = { "titulo": req.params.login };
+    var myquery = { "titulo": req.params.titulo };
     //--------------------base de dados---------------
     MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
       if (err) throw err;

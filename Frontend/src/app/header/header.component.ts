@@ -8,21 +8,23 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.usuariologado();
   }
 
-  usuariologado() {
-    if(localStorage.getItem('login') != 'null'){
+  usuariologado() : boolean{
+    if (localStorage.getItem('login') !== 'null') {
       return true;
+    } else {
+      return false;
     }
-    return false;
   }
 
   logout() {
     localStorage.setItem('login', 'null');
-    console.log(localStorage.getItem('login'))
     this.router.navigate(['/home'])
   }
 

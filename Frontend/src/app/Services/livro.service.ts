@@ -12,8 +12,12 @@ export class LivroService {
 
   constructor(private http: HttpClient) {}
   
-  getLivroNome(titulo: string): Observable<Livro> {
+  getLivroTitulo(titulo: string): Observable<Livro> {
     return this.http.get<Livro>('http://localhost:8000/api/livro/gettitulo/' + titulo);
+  }
+
+  getLivros(): Observable<Livro[]>{
+    return this.http.get<Livro[]>('http://localhost:8000/api/livro/getAll/');
   }
 
   insertLivro(livro: Livro): Observable<Retorno> {

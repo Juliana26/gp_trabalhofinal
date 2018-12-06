@@ -1,6 +1,6 @@
 div.container-fluid{
     background-image: url("../../assets/imagens/login.jpg");
-    height: 560px;
+    height: 650px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -10,7 +10,7 @@ div.container-fluid{
 
 div.container-fluid-redefinicao{
     background-image: url("../../assets/imagens/login.jpg");
-    height: 560px;
+    height: 650px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
