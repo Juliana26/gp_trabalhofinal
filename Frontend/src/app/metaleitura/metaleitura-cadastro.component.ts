@@ -58,10 +58,30 @@ export class MetaleituraCadastroComponent implements OnInit {
   }
 
   inserirMetaLeitura() {
-    this.usuario.meta_leitura.push(this.metaLeituraForm.value)
-    this.usuarioService.updateUsuario(this.usuario).subscribe(retorno => {
-      this.retorno = retorno;
-      alert("Meta cadastrada com sucesso");
-    })
+    let cadastrar = true
+    if(this.usuario.meta_leitura.length !== 0){
+      for (let i = 0; i < this.usuario.meta_leitura.length; i++) {
+        if (this.usuario.meta_leitura[i].nome_livro === this.metaLeituraForm.value.nome_livro) {
+          cadastrar = false;
+        }
+      }
+      if(cadastrar === true){
+        this.usuario.meta_leitura.push(this.metaLeituraForm.value)
+        this.usuarioService.updateUsuario(this.usuario).subscribe(retorno => {
+          this.retorno = retorno;
+          alert("Meta cadastrada com sucesso");
+        })
+      } else {
+        alert('Meta já cadastrada');
+      }
+    }    
+    else {
+      this.usuario.meta_leitura = [];
+      this.usuario.meta_leitura.push(this.metaLeituraForm.value)
+      this.usuarioService.updateUsuario(this.usuario).subscribe(retorno => {
+        this.retorno = retorno;
+        alert("Meta cadastrada com sucesso");
+      })
+    }
   }
 }
